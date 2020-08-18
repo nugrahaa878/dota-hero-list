@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">MyLoginApp</string>
+    <string name="login">Login</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_password">Password</string>
+    <string name="hello_nugrahaa">Hello nugrahaa!</string>
+    <string name="wrong_email_or_password">Wrong email or password</string>
+    <string name="rikimaru">Rikimaru</string>
+
+    <string-array name="data_name" >
+        <item>Abaddon</item>
+        <item>Alchemist</item>
+        <item>Axe</item>
+        <item>BeastMaster</item>
+        <item>BrewMaster</item>
+        <item>BristleBack</item>
+        <item>Centaur Warrunner</item>
+        <item>Chaos Knight</item>
+        <item>Clock Werk</item>
+        <item>Doom</item>
+    </string-array>
+
+    <string-array name="data_role" >
+        <item>Support, Carry, Durable</item>
+        <item>Carry, Support, Durable, Disabler</item>
+        <item>Initiator, Durable, Disabler, Jungler</item>
+        <item>Initiator, Disabler, Durable, Nuker</item>
+        <item>Carry, Initiator, Durable, Disabler</item>
+        <item>Carry, Durable, Initiator, Nuker</item>
+        <item>Durable, Initiator, Disabler, Nuker, Escape</item>
+        <item>Carry, Disabler, Durable, Pusher</item>
+        <item>Initiator, Disabler, Durable, Nuker</item>
+        <item>Carry, Disabler, Initiator, Durable</item>
+    </string-array>
+    
+    <string-array name="data_photo" >
+        <item>@drawable/abaddon_icon</item>
+        <item>@drawable/alchemist</item>
+        <item>@drawable/axe</item>
+        <item>@drawable/beastmaster</item>
+        <item>@drawable/brewmaster_vert</item>
+        <item>@drawable/bristlebac</item>
+        <item>@drawable/centaur</item>
+        <item>@drawable/chaos_knight_vert</item>
+        <item>@drawable/clockwerk</item>
+        <item>@drawable/doom</item>
+    </string-array>
+</resources>
