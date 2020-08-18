@@ -1,5 +1,6 @@
 package com.example.myloginapp
 
+import android.content.res.TypedArray
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,45 +10,49 @@ import kotlinx.android.synthetic.main.activity_hello.*
 
 class ListHeroActivity : AppCompatActivity() {
 
+    private lateinit var dataName: Array<String>
+    private lateinit var dataRole: Array<String>
+    private lateinit var dataPhoto:TypedArray
+
+    private var listHero = ArrayList<Hero>()
+
     companion object {
         const val EXTRA_NAME = "extra_name"
     }
-    
-    private val list = ArrayList<Hero>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hello)
 
-        val name = intent.getStringExtra(EXTRA_NAME)
+        supportActionBar?.title = "Dota 2 Hero"
 
-        supportActionBar?.hide()
-
-        list.addAll(getListHeroes())
-        rv_heroes.setHasFixedSize(true)
+        prepare()
+        addItem()
         showRecyclerList()
-    }
-
-    private fun getListHeroes(): ArrayList<Hero> {
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataRole = resources.getStringArray(R.array.data_role)
-        val dataPhoto = resources.getIntArray(R.array.data_photo)
-
-        val listHero = ArrayList<Hero>()
-        for (position in dataName.indices) {
-            val hero = Hero(
-                dataName[position],
-                dataRole[position],
-                dataPhoto[position]
-            )
-            listHero.add(hero)
-        }
-        return listHero
     }
 
     private fun showRecyclerList() {
         rv_heroes.layoutManager = LinearLayoutManager(this)
-        val listHeroAdapter = ListHeroAdapter(list)
+        val listHeroAdapter =ListHeroAdapter(listHero)
         rv_heroes.adapter = listHeroAdapter
     }
+
+    private fun addItem() {
+        for (position in dataName.indices) {
+            val hero = Hero(
+                dataName[position],
+                dataRole[position],
+                dataPhoto.getResourceId(position, -1)
+            )
+            listHero.add(hero)
+        }
+    }
+
+    private fun prepare() {
+        dataName = resources.getStringArray(R.array.data_name)
+        dataRole = resources.getStringArray(R.array.data_role)
+        dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+    }
+
+
 }

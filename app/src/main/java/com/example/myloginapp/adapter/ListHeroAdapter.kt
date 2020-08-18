@@ -3,6 +3,8 @@ package com.example.myloginapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -25,20 +27,21 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ListHeroAdapter.ListViewHolder, position: Int) {
-        holder.bind(listHero[position])
+        val hero =listHero[position]
+
+        Glide.with(holder.itemView.context)
+            .load(hero.photo)
+            .apply(RequestOptions().override(75, 75))
+            .into(holder.imgPhoto)
+
+        holder.tvName.text = hero.name
+        holder.tvRole.text = hero.role
     }
 
     inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(hero: Hero) {
-            with(itemView) {
-                Glide.with(itemView.context)
-                    .load(hero.photo)
-                    .apply(RequestOptions().override(75, 75))
-                    .into(img_item_photo)
-                tv_name.text = hero.name
-                tv_role.text = hero.role
-            }
-        }
+        var tvName: TextView = itemView.tv_name
+        var tvRole: TextView = itemView.tv_role
+        var imgPhoto:ImageView = itemView.img_item_photo
     }
 
 }
